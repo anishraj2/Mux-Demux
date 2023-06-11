@@ -52,17 +52,41 @@ Y0=s1′s0′I <br>
 
 
 ## Program:
-
-
+### Multiplexer:
+module mux(I0,I1,I2,I3,s1,s0,y);<br>
+input I0,I1,I2,I3,s0,s1;<br>
+output y;<br>
+wire p,q,r,s,s1d,s0d;<br>
+not(s1d,s1);<br>
+not(s0d,s0);<br>
+and(p,s1d,s0d,I0);<br>
+and(q,s1d,s0,I1);<br>
+and(r,s1,s0d,I2);<br>
+and(s,s1,s0,I3);<br>
+or(y,p,q,r,s);<br>
+endmodule<br>
+### De-Multiplexer:
+module demux(I,s1,s0,y3,y2,y1,y0);<br>
+input I,s1,s0;<br>
+output y3,y2,y1,y0;<br>
+wire s1d,s0d;<br>
+not(s1d,s1);<br>
+not(s0d,s0);<br>
+and(y3,s1,s0,I);<br>
+and(y2,s1,s0d,I);<br>
+and(y1,s1d,s0,I);<br>
+and(y0,s1d,s0d,I);<br>
+endmodule<br>
 ## RTL Schematic:
-
-
-
-
+### Multiplexer:<br>
+![Multiplexer](1.png)<br>
+### De-Multiplexer:<br>
+![De-Multiplexer](2.png)
 ## Timing Diagram:
-
-
-
+### Multiplexer:<br>
+![Multiplexer](3.png)<br>
+### De-Multiplexer:<br>
+![De-Multiplexer](4.png)<br>
 ## Result:
 Thus the multiplexer and demultiplexer circuits are designed and implemented and the truth tables are verified.
 
